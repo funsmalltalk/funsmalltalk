@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum - Fun Small Talk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --coral: #EB6D56; --coral-dark: #c95a43; --coral-light: #FDF0EE; --coral-mid: #F5C4BB;
+      --teal: #7BABA4; --teal-light: #EEF5F4;
+      --yellow: #ECD444; --yellow-light: #FDFBDF;
+      --white: #ffffff; --cream: #FAF8F5;
+      --gray-100: #F4F2EF; --gray-200: #E8E4DF; --gray-400: #9CA3AF; --gray-600: #4B5563;
+      --text: #1A1A1A;
+    }
+    body { font-family: "Inter", sans-serif; color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    img { max-width: 100%; display: block; }
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); padding: 12px 0; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .nav-logo { height: 180px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-link { font-size: 14px; font-weight: 600; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+    .nav-link:hover { color: var(--coral); }
+    .nav-link.active { color: var(--coral); }
+    .nav-btn { background: var(--coral); color: #fff !important; padding: 11px 24px; border-radius: 100px; font-weight: 700; font-size: 14px; text-decoration: none; transition: background 0.2s, transform 0.15s; white-space: nowrap; }
+    .nav-btn:hover { background: var(--coral-dark); transform: translateY(-1px); }
+    .page-body { padding-top: 210px; }
+
+    /* PAGE */
+    .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
+    .hero-band { background: var(--coral); padding: 56px 28px; text-align: center; margin-top: 0; }
+    .hero-band .eyebrow { color: rgba(255,255,255,0.75); }
+    .hero-band h1 { font-size: clamp(32px,5vw,56px); font-weight: 900; letter-spacing: -2px; color: #fff; margin-bottom: 16px; }
+    .hero-band p { font-size: 18px; color: rgba(255,255,255,0.85); max-width: 580px; margin: 0 auto 28px; line-height: 1.65; }
+    .hero-band .stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 28px; }
+    .hero-band .stat { color: #fff; text-align: center; }
+    .hero-band .stat-n { font-size: 32px; font-weight: 900; }
+    .hero-band .stat-l { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); }
+    .page { max-width: 860px; margin: 0 auto; padding: 70px 28px 100px; }
+    .module-block { margin-bottom: 60px; }
+    .module-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .module-num { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; color: #fff; flex-shrink: 0; }
+    .m1 .module-num { background: var(--coral); }
+    .m2 .module-num { background: var(--teal); }
+    .m3 .module-num { background: var(--yellow); color: var(--text); }
+    .module-title { font-size: 26px; font-weight: 800; letter-spacing: -0.8px; }
+    .module-sub { font-size: 15px; color: var(--gray-600); margin-top: 4px; }
+    .lessons { list-style: none; border: 1px solid var(--gray-200); border-radius: 20px; overflow: hidden; }
+    .lesson { display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-bottom: 1px solid var(--gray-200); background: #fff; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson:hover { background: var(--cream); }
+    .lesson-num { font-size: 12px; font-weight: 800; color: var(--gray-400); min-width: 32px; }
+    .lesson-icon { font-size: 18px; }
+    .lesson-name { font-size: 15px; font-weight: 600; color: var(--text); flex: 1; }
+    .lesson-tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; }
+    .tag-exercise { background: var(--coral-light); color: var(--coral); }
+    .tag-framework { background: var(--teal-light); color: var(--teal); }
+    .tag-mindset { background: var(--yellow-light); color: #8a7700; }
+    .bonus-block { background: var(--yellow-light); border: 2px solid var(--yellow); border-radius: 20px; padding: 32px; margin-top: 60px; }
+    .bonus-block h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .bonus-block p { font-size: 15px; color: var(--gray-600); margin-bottom: 20px; line-height: 1.65; }
+    .bonus-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .bonus-list li { font-size: 15px; font-weight: 600; display: flex; gap: 10px; }
+    .cta-band { background: var(--cream); border-radius: 24px; padding: 52px 40px; text-align: center; margin-top: 70px; }
+    .cta-band h2 { font-size: clamp(24px,3vw,36px); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 14px; }
+    .cta-band p { font-size: 17px; color: var(--gray-600); margin-bottom: 28px; }
+    .btn-cta { display: inline-block; background: var(--coral); color: #fff; padding: 17px 38px; border-radius: 100px; font-weight: 800; font-size: 17px; text-decoration: none; box-shadow: 0 6px 24px rgba(235,109,86,0.3); transition: all 0.2s; }
+    .btn-cta:hover { background: var(--coral-dark); transform: translateY(-2px); }
+    .trust { font-size: 13px; color: var(--gray-400); margin-top: 14px; }
+    footer { background: var(--text); padding: 32px 0; margin-top: 0; }
+    footer p { color: var(--gray-400); font-size: 13px; text-align: center; }
+    footer a { color: var(--gray-400); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- Open Graph (link preview for WhatsApp, iMessage, LinkedIn, Twitter) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://funsmalltalk.com/curriculum.html">
+  <meta property="og:title" content="Full Curriculum - Fun Small Talk">
+  <meta property="og:description" content="A practical social skills course for young professionals. Learn to approach, engage, and influence with confidence. 342+ students. 30-day guarantee.">
+  <meta property="og:image" content="https://funsmalltalk.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Full Curriculum - Fun Small Talk">
+  <meta name="twitter:description" content="A practical social skills course for young professionals. 342+ students. 30-day guarantee.">
+  <meta name="twitter:image" content="https://funsmalltalk.com/assets/og-image.jpg">
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html"><img src="assets/logo.png" alt="Fun Small Talk" class="nav-logo"></a>
+      <div class="nav-links">
+        <a href="curriculum.html" class="nav-link">Curriculum</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#testimonials" class="nav-link">Results</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+        <a href="index.html#pricing" class="nav-btn">Enroll Now</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-body"><div class="hero-band">
+  <div class="eyebrow">Full Course Curriculum</div>
+  <h1>What's Inside</h1>
+  <p>A proven 3-module system that takes you from inside your head to owning every room - 52+ lessons, real frameworks, real results.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">3</div><div class="stat-l">Modules</div></div>
+    <div class="stat"><div class="stat-n">52+</div><div class="stat-l">Video Lessons</div></div>
+    <div class="stat"><div class="stat-n">342+</div><div class="stat-l">Students</div></div>
+    <div class="stat"><div class="stat-n">98%</div><div class="stat-l">Satisfaction</div></div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- MODULE 1 -->
+  <div class="module-block m1">
+    <div class="module-header">
+      <div class="module-num">1</div>
+      <div>
+        <div class="module-title">Social Mindset - The Internal Work</div>
+        <div class="module-sub">Before you can connect with others, you need to rewire what's happening inside your head.</div>
+      </div>
+    </div>
+    <ul class="lessons">
+      <li class="lesson"><span class="lesson-num">1.1</span><span class="lesson-icon">🎬</span><span class="lesson-name">Why You Fear Social Situations (And Why It's Not Your Fault)</span><span class="lesson-tag tag-mindset">Mindset</span></li>
+      <li class="lesson"><span class="lesson-num">1.2</span><span class="lesson-icon">🎬</span><span class="lesson-name">The Spotlight Effect - People Notice You Far Less Than You Think</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">1.3</span><span class="lesson-icon">🎬</span><span class="lesson-name">Rewiring the Fear of Judgment - The Root Cause</span><span class="lesson-tag tag-mindset">Mindset</span></li>
+      <li class="lesson"><span class="lesson-num">1.4</span><span class="lesson-icon">🎬</span><span class="lesson-name">The 1-Second Anxiety Bypass Rule</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">1.5</span><span class="lesson-icon">🎬</span><span class="lesson-name">Introvert vs. Extrovert - Why It's Not About Personality</span><span class="lesson-tag tag-mindset">Mindset</span></li>
+      <li class="lesson"><span class="lesson-num">1.6</span><span class="lesson-icon">🎬</span><span class="lesson-name">How to Feel Confident Before You Enter the Room</span><span class="lesson-tag tag-exercise">Exercise</span></li>
+      <li class="lesson"><span class="lesson-num">1.7</span><span class="lesson-icon">🎬</span><span class="lesson-name">The Curiosity Switch - Turning Anxiety Into Genuine Interest</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">1.8</span><span class="lesson-icon">📄</span><span class="lesson-name">Workbook: Social Mindset Audit + Daily Reps</span><span class="lesson-tag tag-exercise">Exercise</span></li>
+    </ul>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="module-block m2">
+    <div class="module-header">
+      <div class="module-num">2</div>
+      <div>
+        <div class="module-title">Communication Mechanics</div>
+        <div class="module-sub">The practical toolkit: how to approach, engage, and keep conversations alive naturally.</div>
+      </div>
+    </div>
+    <ul class="lessons">
+      <li class="lesson"><span class="lesson-num">2.1</span><span class="lesson-icon">🎬</span><span class="lesson-name">How to Approach Anyone - Body Language, Timing &amp; First Lines</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">2.2</span><span class="lesson-icon">🎬</span><span class="lesson-name">The Art of the Opener - Lines That Actually Work</span><span class="lesson-tag tag-exercise">Exercise</span></li>
+      <li class="lesson"><span class="lesson-num">2.3</span><span class="lesson-icon">🎬</span><span class="lesson-name">Never Run Out of Things to Say - The Topic Web Framework</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">2.4</span><span class="lesson-icon">🎬</span><span class="lesson-name">Active Listening - The Skill That Makes People Love Talking to You</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">2.5</span><span class="lesson-icon">🎬</span><span class="lesson-name">How to Tell Stories People Actually Want to Hear</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">2.6</span><span class="lesson-icon">🎬</span><span class="lesson-name">Humour 101 - How to Be Funny Without Trying Too Hard</span><span class="lesson-tag tag-mindset">Mindset</span></li>
+      <li class="lesson"><span class="lesson-num">2.7</span><span class="lesson-icon">🎬</span><span class="lesson-name">Exiting Conversations Gracefully (The Forgotten Skill)</span><span class="lesson-tag tag-exercise">Exercise</span></li>
+      <li class="lesson"><span class="lesson-num">2.8</span><span class="lesson-icon">🎬</span><span class="lesson-name">Handling Awkward Silences - Turning Dead Air Into Depth</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">2.9</span><span class="lesson-icon">🎬</span><span class="lesson-name">Phone &amp; Screen Etiquette in Social Settings</span><span class="lesson-tag tag-mindset">Mindset</span></li>
+      <li class="lesson"><span class="lesson-num">2.10</span><span class="lesson-icon">📄</span><span class="lesson-name">Workbook: Topic Web Builder + Opener Practice Drills</span><span class="lesson-tag tag-exercise">Exercise</span></li>
+    </ul>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="module-block m3">
+    <div class="module-header">
+      <div class="module-num">3</div>
+      <div>
+        <div class="module-title">Influence &amp; Connection</div>
+        <div class="module-sub">Move past surface-level talk. Build real relationships that last beyond the room.</div>
+      </div>
+    </div>
+    <ul class="lessons">
+      <li class="lesson"><span class="lesson-num">3.1</span><span class="lesson-icon">🎬</span><span class="lesson-name">From Small Talk to Real Rapport - The Bridge Method</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">3.2</span><span class="lesson-icon">🎬</span><span class="lesson-name">The Sparkle Method - Finding What Makes Each Person Light Up</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">3.3</span><span class="lesson-icon">🎬</span><span class="lesson-name">How to Be Memorable - The 48-Hour Follow-Up System</span><span class="lesson-tag tag-exercise">Exercise</span></li>
+      <li class="lesson"><span class="lesson-num">3.4</span><span class="lesson-icon">🎬</span><span class="lesson-name">Networking Without Feeling Fake or Transactional</span><span class="lesson-tag tag-mindset">Mindset</span></li>
+      <li class="lesson"><span class="lesson-num">3.5</span><span class="lesson-icon">🎬</span><span class="lesson-name">Social Skills at Work - Colleagues, Managers &amp; Job Interviews</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">3.6</span><span class="lesson-icon">🎬</span><span class="lesson-name">First Impressions at Events - The First 90 Seconds</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">3.7</span><span class="lesson-icon">🎬</span><span class="lesson-name">How to Own a Room Without Dominating It</span><span class="lesson-tag tag-mindset">Mindset</span></li>
+      <li class="lesson"><span class="lesson-num">3.8</span><span class="lesson-icon">🎬</span><span class="lesson-name">Building Your Social Circle Intentionally</span><span class="lesson-tag tag-framework">Framework</span></li>
+      <li class="lesson"><span class="lesson-num">3.9</span><span class="lesson-icon">🎬</span><span class="lesson-name">Putting It All Together - Your 30-Day Social Skills Sprint</span><span class="lesson-tag tag-exercise">Exercise</span></li>
+      <li class="lesson"><span class="lesson-num">3.10</span><span class="lesson-icon">📄</span><span class="lesson-name">Final Workbook: The Complete Connection Playbook</span><span class="lesson-tag tag-exercise">Exercise</span></li>
+    </ul>
+  </div>
+
+  <!-- BONUS -->
+  <div class="bonus-block">
+    <h3>🎁 Bonus: Interview Prep Module</h3>
+    <p>Available in the Social Accelerator and VIP Sprint plans. Apply your new social skills directly to job interviews, salary negotiations, and professional networking.</p>
+    <ul class="bonus-list">
+      <li>⚡ How to Answer "Tell Me About Yourself" Like a Pro</li>
+      <li>⚡ The Storytelling Formula for Behavioural Questions (STAR+)</li>
+      <li>⚡ Salary &amp; Offer Negotiation - The Confident Conversation</li>
+      <li>⚡ Post-Interview Follow-Up That Gets You Remembered</li>
+      <li>⚡ Mock Interview Simulation + Feedback (VIP only)</li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <h2>Ready to start?</h2>
+    <p>Join 342+ students and get instant access to the full curriculum.</p>
+    <a href="index.html#pricing" class="btn-cta">See Pricing & Enroll →</a>
+    <div class="trust">30-day money-back guarantee · Instant access · Lifetime access</div>
+  </div>
+
+</div>
+<footer>
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <img src="assets/logo.png" alt="Fun Small Talk" style="height:56px;width:auto;">
+      <div><a href="index.html">Home</a><a href="index.html#pricing">Pricing</a><a href="index.html#contact">Contact</a><a href="terms.html">Terms & Privacy</a></div>
+      <p>© 2025 Fun Small Talk</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
