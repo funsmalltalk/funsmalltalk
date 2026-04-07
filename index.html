@@ -348,7 +348,7 @@
       .stat-item:nth-child(2) { border-right: none; }
       .testi-header { flex-direction: column; align-items: flex-start; }
       .about-photo { aspect-ratio: 4/3; }
-      .module-photos { grid-template-columns: 1fr 1fr; }
+      .module-photos { grid-template-columns: 1fr 1fr !important; }
       .module-photos img { height: 200px; }
       .problem { padding: 64px 0; }
       .modules { padding: 64px 0; }
@@ -530,13 +530,6 @@
   </div>
 </section>
 
-<!-- BEFORE / AFTER -->
-<div style="background:var(--white);padding:0 0 64px;">
-  <div class="container" style="text-align:center;">
-    <img src="assets/pic4.png" alt="Before and after using Fun Small Talk" loading="lazy" style="max-width:420px;width:100%;margin:0 auto;border-radius:20px;box-shadow:0 12px 40px rgba(0,0,0,0.1);">
-  </div>
-</div>
-
 <!-- STATS -->
 <section class="stats">
   <div class="container">
@@ -588,9 +581,10 @@
         </ul>
       </div>
     </div>
-    <div class="module-photos">
+    <div class="module-photos" style="grid-template-columns:1fr 1fr 1fr;">
       <img src="assets/pic3.png" alt="Building real communication skills" loading="lazy">
       <img src="assets/pic2.png" alt="Professionals connecting at a networking event" loading="lazy">
+      <img src="assets/pic4.png" alt="Before and after Fun Small Talk" loading="lazy" style="object-fit:contain;background:#fff;">
     </div>
   </div>
 </section>
