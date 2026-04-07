@@ -743,7 +743,7 @@
     </div>
     <div class="offerings-contact">
       <p>Interested in a custom engagement? Tell me what you need.</p>
-      <form class="contact-form offerings-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="contact-form offerings-form" onsubmit="handleForm(event,this)">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="_replyto" placeholder="Your email" required>
@@ -801,7 +801,7 @@
         <div class="eyebrow">Get In Touch</div>
         <h2>Let's Talk</h2>
         <p>Have a question before enrolling? Want to discuss a workshop or speaking engagement? Send a message and I'll get back to you within 24 hours.</p>
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form class="contact-form" onsubmit="handleForm(event,this)">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="_replyto" placeholder="Your email" required>
           <textarea name="message" rows="4" placeholder="What's on your mind?" required></textarea>
@@ -939,6 +939,20 @@
 
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobileMenu");
+  function handleForm(e, form) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get('name') || '';
+    const email = data.get('_replyto') || '';
+    const message = data.get('message') || '';
+    const subject = encodeURIComponent(data.get('_subject') || 'Message from funsmalltalk.com');
+    const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+    window.location.href = 'mailto:info@funsmalltalk.com?subject=' + subject + '&body=' + body;
+    const success = form.querySelector('.form-success');
+    if (success) { success.style.display = 'block'; }
+    form.reset();
+  }
+
   function closeMobileMenu() {
     mobileMenu.classList.remove("open");
     hamburger.classList.remove("open");
