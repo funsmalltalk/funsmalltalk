@@ -270,6 +270,10 @@
     .loss-card.with li::before { content: "✓"; position: absolute; left: 0; color: #16a34a; font-weight: 900; }
     @media (max-width: 960px) { .loss-inner { grid-template-columns: 1fr; } }
 
+    /* PIC4 */
+    .pic4-section { background: var(--white); padding: 0 0 0; }
+    .pic4-img { width: 100%; display: block; }
+
     /* FINAL CTA */
     .final-cta { background: var(--coral); padding: 100px 0; text-align: center; }
     .final-cta h2 { font-size: clamp(32px,5vw,58px); font-weight: 900; color: var(--white); letter-spacing: -2px; line-height: 1.08; margin-bottom: 18px; }
@@ -343,8 +347,7 @@
       .offerings, .contact { padding: 52px 0; }
       .final-cta { padding: 72px 0; }
       .section-head { margin-bottom: 36px; }
-      /* Problem imgs: hide on tablet+ single column */
-      .problem-imgs { display: none; }
+      /* Problem imgs: show on tablet, 2-col stacked */
     }
 
     /* ── MOBILE (≤768px) ── */
@@ -395,7 +398,7 @@
       .problem h2 { font-size: clamp(24px, 7vw, 34px); letter-spacing: -0.5px; margin-bottom: 24px; }
       .problem-point p { font-size: 15px; }
       .punchline { font-size: 15px; padding: 20px 22px; }
-      .problem-imgs { display: none; }
+      .problem-imgs { display: none; } /* hide on mobile, text-only */
 
       /* Section headings: reduce letter-spacing */
       .section-head h2, .about h2, .faq-left h2, .pricing-head h2, .testi-header h2, .loss-left h2 {
@@ -623,7 +626,6 @@
       <div class="problem-imgs">
         <img src="assets/pic6.png" alt="Social situation" loading="lazy">
         <img src="assets/pic1.png" alt="Real connection" loading="lazy">
-        <img src="assets/pic4.png" alt="Before and after Fun Small Talk" loading="lazy" class="pic-wide">
       </div>
     </div>
   </div>
@@ -952,6 +954,13 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PIC4 BEFORE/AFTER -->
+<section class="pic4-section">
+  <div class="container">
+    <img src="assets/pic4.png" alt="Before and after Fun Small Talk" loading="lazy" class="pic4-img">
   </div>
 </section>
 
