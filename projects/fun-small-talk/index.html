@@ -326,9 +326,10 @@
     .loss-pic img { width: 100%; border-radius: 20px; display: block; }
 
     /* RESPONSIVE */
+    /* ── TABLET (≤960px) ── */
     @media (max-width: 960px) {
       .hero-inner, .problem-inner, .about-inner, .contact-inner, .faq-inner { grid-template-columns: 1fr; }
-      .hero-img-wrap { display: block; margin-top: 32px; max-width: 320px; margin-left: auto; margin-right: auto; }
+      .hero-img-wrap { display: block; margin-top: 32px; max-width: 300px; margin-left: auto; margin-right: auto; }
       .hero-float { display: none; }
       .modules-grid, .testi-grid, .pricing-grid { grid-template-columns: 1fr; }
       .offerings-grid { grid-template-columns: repeat(2,1fr); }
@@ -336,101 +337,149 @@
       .price-card.featured:hover { transform: translateY(-4px); }
       .stats-grid { grid-template-columns: repeat(2,1fr); }
       .stat-item:nth-child(2) { border-right: none; }
-      .testi-header { flex-direction: column; align-items: flex-start; }
-      .about-photo { aspect-ratio: 4/3; }
+      .testi-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
+      .testi-rating { text-align: left; }
+      .about-photo { aspect-ratio: 3/2; }
       .module-photos { grid-template-columns: 1fr 1fr; }
       .module-photos img { height: 200px; }
-      .problem { padding: 56px 0; }
-      .modules { padding: 56px 0; }
-      .about { padding: 56px 0; }
-      .testimonials { padding: 56px 0; }
-      .pricing { padding: 56px 0; }
-      .offerings { padding: 48px 0; }
-      .faq { padding: 56px 0; }
-      .contact { padding: 48px 0; }
-      .loss-section { padding: 56px 0; }
-      .final-cta { padding: 64px 0; }
-      .section-head { margin-bottom: 32px; }
+      /* Section padding: tighter on tablet */
+      .problem, .modules, .about, .testimonials, .pricing, .faq, .loss-section { padding: 64px 0; }
+      .offerings, .contact { padding: 52px 0; }
+      .final-cta { padding: 72px 0; }
+      .section-head { margin-bottom: 36px; }
+      /* Problem imgs: hide on tablet+ single column */
+      .problem-imgs { display: none; }
     }
+
+    /* ── MOBILE (≤768px) ── */
     @media (max-width: 768px) {
+      /* Layout */
       .hamburger { display: flex; }
       .nav-links { display: none; }
       .mobile-sticky-cta { display: block; }
       body { padding-bottom: 80px; }
-      .nav-logo { height: 44px; }
-      .nav.scrolled .nav-logo { height: 36px; }
-      .hero { padding: 80px 0 0; }
-      html { scroll-padding-top: 72px; }
-      /* Hero: stack cleanly, no bottom padding gap */
-      .hero-text { padding-bottom: 36px; }
-      .hero h1 { font-size: clamp(34px, 9vw, 48px); letter-spacing: -1.5px; }
-      .hero-sub { font-size: 16px; margin-bottom: 28px; }
-      .btn-hero { font-size: 15px; padding: 15px 28px; }
-      /* Trust bar: wrap to 2 per row */
-      .trust-bar-inner { gap: 12px; padding: 0 16px; flex-wrap: wrap; justify-content: center; }
-      /* Stats: 2 columns */
+
+      /* Nav */
+      .nav-logo { height: 40px; }
+      .nav.scrolled .nav-logo { height: 34px; }
+      html { scroll-padding-top: 68px; }
+
+      /* Hero */
+      .hero { padding: 76px 0 0; }
+      .hero-text { padding-bottom: 32px; }
+      .hero h1 { font-size: clamp(32px, 9vw, 46px); letter-spacing: -0.5px; line-height: 1.1; }
+      .hero-sub { font-size: 15px; line-height: 1.65; margin-bottom: 24px; max-width: 100%; }
+      .hero-badge { font-size: 12px; padding: 5px 12px; margin-bottom: 18px; }
+      .btn-hero { width: 100%; justify-content: center; font-size: 16px; padding: 16px 24px; }
+      .hero-urgency { display: block; text-align: center; margin-top: 12px; font-size: 12px; }
+      .hero-trust { font-size: 12px; justify-content: center; margin-top: 8px; }
+      /* Hide hero image on mobile — headline + CTA is what converts */
+      .hero-img-wrap { display: none; }
+
+      /* Social proof bar: horizontal scroll, no wrap */
+      .spb-inner { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding: 0 4px; -webkit-overflow-scrolling: touch; gap: 16px; }
+      .spb-inner::-webkit-scrollbar { display: none; }
+      .spb-logos { flex-wrap: nowrap; gap: 20px; }
+      .spb-label { white-space: nowrap; flex-shrink: 0; }
+
+      /* Trust bar: single column stack */
+      .trust-bar-inner { flex-direction: column; gap: 8px; align-items: flex-start; padding: 0 20px; }
+
+      /* Stats: 2×2 grid, tighter */
       .stats-grid { grid-template-columns: repeat(2,1fr); }
-      .stat-num { font-size: 36px; }
-      /* Problem: single column, reduce icon size */
-      .prob-icon { font-size: 28px; }
-      /* Modules: single card, full width */
+      .stat-item { padding: 20px 12px; }
+      .stat-num { font-size: clamp(32px, 8vw, 44px); letter-spacing: -1px; }
+      .stat-lbl { font-size: 12px; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.25); }
+      .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.25); border-right: none; }
+
+      /* Problem section */
+      .problem-inner { gap: 32px; }
+      .problem h2 { font-size: clamp(24px, 7vw, 34px); letter-spacing: -0.5px; margin-bottom: 24px; }
+      .problem-point p { font-size: 15px; }
+      .punchline { font-size: 15px; padding: 20px 22px; }
+      .problem-imgs { display: none; }
+
+      /* Section headings: reduce letter-spacing */
+      .section-head h2, .about h2, .faq-left h2, .pricing-head h2, .testi-header h2, .loss-left h2 {
+        letter-spacing: -0.5px;
+      }
+
+      /* Modules */
       .mod-card { padding: 24px 20px; }
-      /* Testimonials: remove banner height */
-      .testi-banner { height: 200px; }
-      .testi-banner-overlay { padding: 20px 24px; }
-      .testi-banner-quote p { font-size: 15px; }
-      /* Pricing: stack, reduce padding */
-      .price-card { padding: 28px 20px; }
-      /* Offerings: 2 cols */
-      .offerings-grid { grid-template-columns: repeat(2,1fr); }
-      /* FAQ: single column */
-      .faq-inner { gap: 32px; }
+      .mod-num { font-size: 52px; }
+      .module-photos { grid-template-columns: 1fr; }
+      .module-photos img { height: 200px; }
+
+      /* About */
+      .about-inner { gap: 28px; }
+      .about-photo { aspect-ratio: 3/2; max-height: 280px; object-fit: cover; }
+      .about-badge { right: 8px; bottom: 8px; padding: 10px 14px; }
+      .about-badge strong { font-size: 22px; }
+      .about p { font-size: 15px; }
+      .creds { padding: 18px; }
+
+      /* Testimonials */
+      .testi-grid { gap: 14px; }
+      .testi-card { padding: 22px 18px; }
+      .testi-banner { height: auto; min-height: 180px; }
+      .testi-banner img { height: 180px; }
+      .testi-banner-overlay {
+        background: linear-gradient(to bottom, rgba(235,109,86,0.85) 0%, rgba(235,109,86,0.6) 100%);
+        padding: 24px 20px;
+        align-items: flex-end;
+      }
+      .testi-banner-quote p { font-size: 14px; max-width: 100%; }
+
+      /* Pricing */
+      .pricing-grid { gap: 14px; }
+      .price-card { padding: 26px 20px; }
+      .price-amount { font-size: 40px; letter-spacing: -1px; }
+      .price-amount sup { font-size: 20px; }
+      .btn-buy { padding: 15px; font-size: 15px; }
+
+      /* Offerings */
+      .offerings-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .offering-card { padding: 18px 14px; }
+      .offering-icon { font-size: 26px; margin-bottom: 8px; }
+      .offering-card h4 { font-size: 13px; }
+      .offering-card p { font-size: 12px; }
+
+      /* FAQ */
+      .faq-inner { grid-template-columns: 1fr; gap: 28px; }
+      .faq-q span { font-size: 15px; }
+      .faq-ans p { font-size: 14px; }
+
       /* Contact */
-      .contact-inner { gap: 32px; }
+      .contact-inner { gap: 24px; }
+      .contact-img { display: none; }
+      .offerings-contact .contact-form > div[style] { grid-template-columns: 1fr !important; }
+
       /* Loss section */
       .loss-inner { gap: 28px; }
-      /* Module photos: single column */
-      .module-photos { grid-template-columns: 1fr; }
-      .module-photos img { height: 220px; }
-      /* FB banner shorter */
-      .fb-banner img { max-height: 200px; }
+      .loss-left h2 { font-size: clamp(24px, 7vw, 32px); letter-spacing: -0.5px; }
+      .loss-left p { font-size: 15px; }
+
+      /* Final CTA */
+      .final-cta h2 { letter-spacing: -0.5px; }
+      .btn-white { width: 100%; justify-content: center; }
+
+      /* FB banner */
+      .fb-banner img { max-height: 180px; }
+
       /* Footer */
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
       .footer-bottom { flex-direction: column; gap: 8px; }
-      /* Hide contact image on mobile */
-      .contact-img { display: none; }
-      /* Offerings form: single column */
-      .offerings-contact .contact-form > div[style] { grid-template-columns: 1fr !important; }
+      .footer-logo { height: 36px; }
     }
+
+    /* ── SMALL PHONES (≤480px) ── */
     @media (max-width: 480px) {
       .container { padding: 0 16px; }
-      .nav-logo { height: 38px; }
-      .hero { padding: 72px 0 0; }
-      .hero h1 { font-size: clamp(30px, 10vw, 40px); }
-      .hero-urgency { font-size: 12px; }
-      /* Stats: 2 cols, compact */
-      .stat-item { padding: 16px 8px; }
-      .stat-num { font-size: 30px; }
-      .stat-label { font-size: 12px; }
-      /* Problem cards: reduce padding */
-      .prob-card { padding: 20px 16px; }
-      /* Social proof bar: scroll horizontally */
-      .trust-bar-inner { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding: 0 16px; gap: 24px; -webkit-overflow-scrolling: touch; }
-      .trust-bar-inner::-webkit-scrollbar { display: none; }
-      /* Offerings: single column on small phones */
+      .hero h1 { font-size: clamp(28px, 10vw, 36px); }
       .offerings-grid { grid-template-columns: 1fr; }
-      /* Pricing: ensure full width */
-      .price-card { padding: 24px 18px; }
-      .price-price { font-size: 38px; }
-      /* FAQ items: smaller font */
-      .faq-q span { font-size: 14px; }
-      .faq-ans p { font-size: 14px; }
-      /* Final CTA */
-      .final-cta h2 { font-size: clamp(28px, 8vw, 40px); }
-      .btn-white { font-size: 15px; padding: 15px 28px; }
-      /* Footer */
-      .footer-logo { height: 40px; }
-      .footer-links { gap: 16px; }
+      .footer-links { gap: 14px; flex-wrap: wrap; }
     }
   </style>
   <!-- Favicon -->
