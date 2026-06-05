@@ -615,12 +615,10 @@
       .section-head { margin-bottom: 28px; }
 
       .modules-grid {
-        display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        gap: 14px; padding-bottom: 12px; margin: 0 -28px; padding-left: 28px; padding-right: 28px;
+        display: flex; flex-direction: column; gap: 14px;
+        overflow-x: visible;
       }
-      .modules-grid::-webkit-scrollbar { display: none; }
-      .mod-card { min-width: 82vw; scroll-snap-align: start; flex-shrink: 0; padding: 24px 20px; }
+      .mod-card { min-width: unset; width: 100%; padding: 24px 20px; overflow: hidden; }
 
       .module-photos { grid-template-columns: 1fr; }
       .module-photos img { height: 220px; object-position: top center; }
