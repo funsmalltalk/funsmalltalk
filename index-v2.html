@@ -1373,6 +1373,31 @@
   });
 
   /* --- Form handler --- */
+  document.querySelectorAll('form[action*="formspree"]').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res) {
+        if (res.ok) {
+          form.innerHTML = '<div style="padding:24px 0;text-align:center;"><div style="font-size:32px;margin-bottom:10px;">✓</div><p style="font-weight:700;font-size:17px;color:#222;margin:0 0 6px">Message sent!</p><p style="color:#666;font-size:14px;margin:0">I\'ll get back to you within 24 hours.</p></div>';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+          alert('Something went wrong. Please email info@funsmalltalk.com directly.');
+        }
+      }).catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        alert('Something went wrong. Please email info@funsmalltalk.com directly.');
+      });
+    });
+  });
 
   /* --- Toast notification --- */
   var toast = document.getElementById("toast");
