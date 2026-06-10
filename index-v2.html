@@ -1215,10 +1215,10 @@
     </div>
     <div class="offerings-contact">
       <p>Interested in a custom engagement? Tell me what you need.</p>
-      <form class="contact-form offerings-form" onsubmit="handleForm(event,this)">
+      <form class="contact-form offerings-form" action="https://formspree.io/f/xojznvgy" method="POST">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
           <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="_replyto" placeholder="Your email" required>
+          <input type="email" name="email" placeholder="Your email" required>
         </div>
         <textarea name="message" rows="3" placeholder="Describe what you're looking for..." required></textarea>
         <input type="hidden" name="_subject" value="Custom engagement enquiry - funsmalltalk.com">
@@ -1236,9 +1236,9 @@
         <div class="section-eyebrow">Get In Touch</div>
         <h2>Let's Talk</h2>
         <p>Have a question before enrolling? Want to discuss a workshop or speaking engagement? Send a message and I'll get back to you within 24 hours.</p>
-        <form class="contact-form" onsubmit="handleForm(event,this)">
+        <form class="contact-form" action="https://formspree.io/f/xojznvgy" method="POST">
           <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="_replyto" placeholder="Your email" required>
+          <input type="email" name="email" placeholder="Your email" required>
           <textarea name="message" rows="4" placeholder="What's on your mind?" required></textarea>
           <input type="hidden" name="_subject" value="New message from funsmalltalk.com">
           <button type="submit" class="btn-form">Send Message</button>
@@ -1373,17 +1373,6 @@
   });
 
   /* --- Form handler --- */
-  function handleForm(e, form) {
-    e.preventDefault();
-    var data = new FormData(form);
-    var name = data.get('name') || '';
-    var email = data.get('_replyto') || '';
-    var message = data.get('message') || '';
-    var subject = encodeURIComponent(data.get('_subject') || 'Message from funsmalltalk.com');
-    var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-    window.location.href = 'mailto:info@funsmalltalk.com?subject=' + subject + '&body=' + body;
-    form.reset();
-  }
 
   /* --- Toast notification --- */
   var toast = document.getElementById("toast");
