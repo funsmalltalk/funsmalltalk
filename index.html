@@ -1215,13 +1215,14 @@
     </div>
     <div class="offerings-contact">
       <p>Interested in a custom engagement? Tell me what you need.</p>
-      <form class="contact-form offerings-form" action="https://formspree.io/f/xojznvgy" method="POST">
+      <form class="contact-form offerings-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="c174f6af-95b7-4855-8826-6f956164fd00">
+        <input type="hidden" name="subject" value="Custom engagement enquiry - funsmalltalk.com">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Your email" required>
         </div>
         <textarea name="message" rows="3" placeholder="Describe what you're looking for..." required></textarea>
-        <input type="hidden" name="_subject" value="Custom engagement enquiry - funsmalltalk.com">
         <button type="submit" class="btn-form">Send Enquiry</button>
       </form>
     </div>
@@ -1236,11 +1237,12 @@
         <div class="section-eyebrow">Get In Touch</div>
         <h2>Let's Talk</h2>
         <p>Have a question before enrolling? Want to discuss a workshop or speaking engagement? Send a message and I'll get back to you within 24 hours.</p>
-        <form class="contact-form" action="https://formspree.io/f/xojznvgy" method="POST">
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="c174f6af-95b7-4855-8826-6f956164fd00">
+          <input type="hidden" name="subject" value="New message from funsmalltalk.com">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Your email" required>
           <textarea name="message" rows="4" placeholder="What's on your mind?" required></textarea>
-          <input type="hidden" name="_subject" value="New message from funsmalltalk.com">
           <button type="submit" class="btn-form">Send Message</button>
         </form>
         <div class="contact-links" style="margin-top:18px;">
@@ -1373,7 +1375,7 @@
   });
 
   /* --- Form handler --- */
-  document.querySelectorAll('form[action*="formspree"]').forEach(function(form) {
+  document.querySelectorAll('form[action*="web3forms"]').forEach(function(form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = form.querySelector('button[type="submit"]');
